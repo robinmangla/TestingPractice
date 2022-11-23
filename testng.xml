@@ -11,16 +11,5 @@
             <class name = "org.example.SauceLabPracticeTest" />
         </classes>
 
-    </test>
-
-    <test name = "Sauce Test - firefox">
-        <parameter name = "browser" value = "firefox"/>
-        <parameter name = "version" value = "106"/>
-
-        <classes>
-            <class name = "org.example.SauceLabPracticeTest" />
-        </classes>
-
-    </test>
 
 </suite>

@@ -28,11 +28,11 @@ pipeline {
        steps {
 
         echo 'testing the application....'
-        bat "mvn test -DsuiteXmlFile=${params.Test_Suites}"
+        bat "mvn surefire:test -DsuiteXmlFile=${params.Test_Suites}"
         }      
        post {
                 always {
-                  junit allowEmptyResults: true, testResults: 'test-output/*.html'
+                  junit allowEmptyResults: true, testResults: 'target/surefire-reports/testing-results.xml'
                   }
              }
      }

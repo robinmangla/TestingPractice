@@ -28,7 +28,7 @@ pipeline {
        steps {
 
         echo 'testing the application....'
-        bat "mvn surefire:test -DsuiteXmlFile=${params.Test_Suites}"
+        bat "mvn surefiretest -DsuiteXmlFile=${params.Test_Suites}"
         }      
        post {
                 always {

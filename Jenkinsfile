@@ -21,11 +21,6 @@ pipeline {
         bat 'mvn clean'
 
         }
-        post {
-                always {
-                  junit allowEmptyResults: true, testResults: 'test-output/*.html'
-                  }
-             }
      }
 
      stage("test") {
@@ -34,8 +29,12 @@ pipeline {
 
         echo 'testing the application....'
         bat "mvn test -DsuiteXmlFile=${params.Test_Suites}"
-
-        }
+        }      
+       post {
+                always {
+                  junit allowEmptyResults: true, testResults: 'test-output/*.html'
+                  }
+             }
      }
   }
 }

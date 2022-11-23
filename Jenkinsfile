@@ -8,7 +8,7 @@ pipeline {
   }
 
   parameters {
-    choice(name: 'Test_Suites', choices: ['testng'], description: 'SelectTestSuitetoExecute')
+    choice(name: 'Test_Suites', choices: ['testng.xml'], description: 'SelectTestSuitetoExecute')
   }
 
   stages {

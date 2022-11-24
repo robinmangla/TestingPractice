@@ -29,7 +29,13 @@ pipeline {
 
         echo 'testing the application....'
         bat "mvn test -DsuiteXmlFile=${params.Test_Suites}"
-        }      
+        }
+
+        post {
+                        always {
+                          junit 'target/surefire-reports/junitreports/*.xml'
+                        }
+        }
        
      }
   }

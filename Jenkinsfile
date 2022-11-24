@@ -33,8 +33,7 @@ pipeline {
 
         post {
                         always {
-//                          junit 'target/surefire-reports/junitreports/*.xml'
-                          testng 'target/surefire-reports/emailable-report.html'
+                          junit 'target/surefire-reports/junitreports/*.xml'
                         }
         }
        

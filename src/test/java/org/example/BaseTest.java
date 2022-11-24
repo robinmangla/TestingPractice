@@ -68,6 +68,7 @@ public class BaseTest {
             WebDriverManager.chromedriver().setup();
             ChromeOptions co = new ChromeOptions();
             co.setHeadless(true);
+            co.addArguments(version);
             driverNew.set(new ChromeDriver(co));
         }
         else if(browser.equals("firefox")) {

@@ -5,7 +5,7 @@
 
     <test name = "Sauce Test - chrome">
         <parameter name = "browser" value = "chrome"/>
-        <parameter name = "version" value = "90"/>
+        <parameter name = "version" value = "107"/>
 
         <classes>
             <class name = "org.example.SauceLabPracticeTest" />
@@ -13,5 +13,14 @@
         
     </test>
 
+    <test name = "Sauce Test - firefox">
+        <parameter name = "browser" value = "firefox"/>
+        <parameter name = "version" value = "107"/>
 
+        <classes>
+            <class name = "org.example.SauceLabPracticeTest" />
+        </classes>
+
+    </test>
+    
 </suite>

@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Sauce Lab Practice Session" parallel = "tests" thread-count = "2">
+    <listeners>
+        <listener class-name="listeners.MyListener"/>
+    </listeners>
+
 
     <test name = "Sauce Test - chrome">
         <parameter name = "browser" value = "chrome"/>
@@ -22,5 +26,5 @@
         </classes>
 
     </test>
-    
+
 </suite>

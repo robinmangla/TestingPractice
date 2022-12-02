@@ -9,14 +9,16 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import org.apache.logging.log4j.LogManager;
 import org.testng.ITestContext;
+import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 import utils.DateTimeUtilities;
 
+import java.io.File;
 import java.io.PrintStream;
 import java.util.logging.Logger;
 
-public class MyListener extends TestListenerAdapter {
+public class MyListener implements ITestListener {
     public static ExtentSparkReporter sparkReporter;
     public static ExtentReports extentReports;
     public static ExtentTest extentTest;
@@ -30,8 +32,12 @@ public class MyListener extends TestListenerAdapter {
 //    public static String srcFolderPath = ExtentManager.absolutePathToReport;
 
 
-    public void onStart(ITestContext testContext) {
-        sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/Reports/AutomationReport" + DateTimeUtilities.currentSystemDate("_dd-MM-YYYY-HH-mm-ss") + ".html");
+    public void onStart(ITestContext iTestContext) {
+        File f = new File(System.getProperty("user.dir") + "/Reports/AutomationReport" + DateTimeUtilities.currentSystemDate("_dd-MM-YYYY-HH-mm-ss") + ".html");
+        System.out.println("Path is: " + f);
+//        sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/Reports/AutomationReport" + DateTimeUtilities.currentSystemDate("_dd-MM-YYYY-HH-mm-ss") + ".html");
+        sparkReporter = new ExtentSparkReporter(f);
+        //    System.out.println("path is: " + System.getProperty("user.dir") + "/Reports/AutomationReport" + DateTimeUtilities.currentSystemDate("_dd-MM-YYYY-HH-mm-ss") + ".html");
         sparkReporter.config().setDocumentTitle("Test Execution Summary Report");
         sparkReporter.config().setReportName("Test Execution Summary Report");
         sparkReporter.config().setTheme(Theme.STANDARD);
@@ -39,8 +45,10 @@ public class MyListener extends TestListenerAdapter {
         extentReports = new ExtentReports();
         extentReports.attachReporter(sparkReporter);
         extentReports.setSystemInfo("HostName", "LocalHost");
-        extentReports.setSystemInfo("Automation Flow", "CASL API");
+        extentReports.setSystemInfo("Automation Flow", "Automation Practice");
         extentReports.setSystemInfo("Tester Name", "Robin");
+
+        System.out.println("Execution of test cases has started");
     }
     public void onTestStart(ITestResult result) {
         extentTest = extentReports.createTest(result.getMethod().getMethodName());
@@ -79,7 +87,7 @@ public class MyListener extends TestListenerAdapter {
         System.out.println("Test Skipped: " + result.getMethod().getMethodName());
     }
 
-    public void onFinish(ITestContext testContext) {
+    public void onFinish(ITestContext iTestContext) {
 
         //Collect the group names to add them in the email title
 /*        String executeGroup = testContext.getSuite().getName();

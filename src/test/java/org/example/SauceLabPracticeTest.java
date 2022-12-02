@@ -1,5 +1,6 @@
 package org.example;
 
+import com.aventstack.extentreports.Status;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,7 +26,6 @@ public class SauceLabPracticeTest extends BaseTest {
         Thread.sleep(2000);
     }
 
-
     @Test
     public void TC01_itemsCheck(Method method) throws InterruptedException {
         System.out.println("thread id is: " + method.getName() + Thread.currentThread().getId());
@@ -43,8 +43,9 @@ public class SauceLabPracticeTest extends BaseTest {
         List<WebElement> items = driver.findElements(By.xpath("//*[@class='inventory_item']"));
         Thread.sleep(2000);
         Assert.assertTrue(items.size()==6);
+//        extentTest.log(Status.PASS, method.getName() + "passed successfully");
+        extentTest.info("Expected and actual items check are equal");
     }
-
 
     @Test
     public void TC02_addToCartButtonCheck(Method method) throws InterruptedException {
@@ -63,5 +64,6 @@ public class SauceLabPracticeTest extends BaseTest {
         List<WebElement> addToCartButtons = driver.findElements(By.xpath("//*[text()='Add to cart']"));
         Thread.sleep(2000);
         Assert.assertTrue(addToCartButtons.size()==6);
+        extentTest.info("Expected and actual add to cart buttons check are equal");
     }
 }

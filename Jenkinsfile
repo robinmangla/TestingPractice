@@ -38,6 +38,14 @@ pipeline {
         }
        
      }
+
+     stage("Email") {
+         steps {
+         emailext (to: 'robin.mangla@gmail.com', replyTo: 'robin.mangla@gmail.com', subject: "Email
+         Report from - '${env.JOB_NAME}' ", body: readFile("Reports/AutomationReport_02-12-2022-23-12-52.html"),
+         mimeType: 'text/html');
+         }
+     }
   }
 }
 

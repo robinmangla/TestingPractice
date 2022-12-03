@@ -6,15 +6,13 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 import utils.DateTimeUtilities;
 
 import java.io.File;
-import java.io.PrintStream;
+
 
 public class MyListenerNew extends TestListenerAdapter {
 
@@ -47,7 +45,6 @@ public class MyListenerNew extends TestListenerAdapter {
         System.out.println("Test passed");
         extentTest.log(Status.PASS, r.getMethod().getMethodName());
         System.out.println("Test Passed: " + r.getMethod().getMethodName());
-//        extentReports.flush();
     }
 
     public void onTestFailure(ITestResult r) {
@@ -55,14 +52,12 @@ public class MyListenerNew extends TestListenerAdapter {
         extentTest.log(Status.FAIL, r.getMethod().getMethodName());
         extentTest.log(Status.FAIL, "Test Case Failed and Exception is: " + r.getThrowable());
         System.out.println("Test Failed: " + r.getMethod().getMethodName());
-//        extentReports.flush();
     }
 
     public void onTestSkipped(ITestResult r) {
         System.out.println("Test skipped");
         extentTest.log(Status.SKIP, r.getMethod().getMethodName());
         System.out.println("Test Skipped: " + r.getMethod().getMethodName());
-//        extentReports.flush();
     }
 
     public void onFinish(ITestContext iTestContext) {

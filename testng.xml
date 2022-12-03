@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Sauce Lab Practice Session" parallel = "tests" thread-count = "2">
+<suite name="Sauce Lab Practice Session" parallel = "false" thread-count = "2">
     <listeners>
-        <listener class-name="listeners.MyListener"/>
+        <listener class-name="listeners.MyListenerNew"/>
     </listeners>
 
 
@@ -17,14 +17,14 @@
         
     </test>
 
-    <test name = "Sauce Test - firefox">
-        <parameter name = "browser" value = "firefox"/>
-        <parameter name = "version" value = "107"/>
+<!--    <test name = "Sauce Test - firefox">-->
+<!--        <parameter name = "browser" value = "firefox"/>-->
+<!--        <parameter name = "version" value = "107"/>-->
 
-        <classes>
-            <class name = "org.example.SauceLabPracticeTest" />
-        </classes>
+<!--        <classes>-->
+<!--            <class name = "org.example.SauceLabPracticeTest" />-->
+<!--        </classes>-->
 
-    </test>
+<!--    </test>-->
 
 </suite>
